@@ -113,7 +113,7 @@ std::pair<Eigen::Vector3f, float> ComputeNormalizationParameters(
         zMax = -1000000;
 
   pangolin::Image<float> vertices =
-      pangolin::get<pangolin::Image<float>>(geom.buffers["geometry"].attributes["vertex"]);
+      std::get<pangolin::Image<float>>(geom.buffers["geometry"].attributes["vertex"]);
 
   const std::size_t numVertices = vertices.h;
 
@@ -124,7 +124,7 @@ std::pair<Eigen::Vector3f, float> ComputeNormalizationParameters(
     auto itVertIndices = object.second.attributes.find("vertex_indices");
     if (itVertIndices != object.second.attributes.end()) {
       pangolin::Image<uint32_t> ibo =
-          pangolin::get<pangolin::Image<uint32_t>>(itVertIndices->second);
+          std::get<pangolin::Image<uint32_t>>(itVertIndices->second);
 
       for (uint i = 0; i < ibo.h; ++i) {
         for (uint j = 0; j < 3; ++j) {
@@ -175,7 +175,7 @@ float BoundingCubeNormalization(
         zMax = -1000000;
 
   pangolin::Image<float> vertices =
-      pangolin::get<pangolin::Image<float>>(geom.buffers["geometry"].attributes["vertex"]);
+      std::get<pangolin::Image<float>>(geom.buffers["geometry"].attributes["vertex"]);
 
   const std::size_t numVertices = vertices.h;
 
@@ -186,7 +186,7 @@ float BoundingCubeNormalization(
     auto itVertIndices = object.second.attributes.find("vertex_indices");
     if (itVertIndices != object.second.attributes.end()) {
       pangolin::Image<uint32_t> ibo =
-          pangolin::get<pangolin::Image<uint32_t>>(itVertIndices->second);
+          std::get<pangolin::Image<uint32_t>>(itVertIndices->second);
 
       for (uint i = 0; i < ibo.h; ++i) {
         for (uint j = 0; j < 3; ++j) {
